@@ -3,9 +3,14 @@ import hotword_detection
 import speech_to_text
 import text_to_speech
 import ai_conversation
+from dotenv import load_dotenv, dotenv_values
 
 def main():
-    listen_hot_word();
+    load_dotenv()
+    listen_hot_word()
+
+def get_config():
+    return dotenv_values(".env")
 
 def listen_hot_word():
     while True:
@@ -18,7 +23,7 @@ def listen_and_respond():
         text = speech_to_text.transcribe_audio()
         if not text:
             text_to_speech.respond_to_user("Üzgünüm, anlayamadım.")
-            listen_hot_word();
+            listen_hot_word()
             continue
         response = ai_conversation.generate_response(text)
         text_to_speech.respond_to_user(response)
