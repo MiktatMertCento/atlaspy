@@ -15,7 +15,7 @@ def listen_for_wake_word():
                     return True
             except sr.UnknownValueError:
                 pass
-
+ 
 # Test etmek için
 if __name__ == "__main__":
     listen_for_wake_word()
